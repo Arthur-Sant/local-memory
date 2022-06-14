@@ -1,0 +1,38 @@
+@baseUrl = http://localhost:3002
+
+###
+
+// @name createUser
+POST {{baseUrl}}/users
+Content-Type: application/json
+
+{
+  "username": "teste.teste4",
+  "name": "Teste"
+}
+
+###
+
+@newlyCreatedUserId = {{createUser.response.body.$.id}}
+
+###
+
+GET {{baseUrl}}/users
+
+###
+
+GET  {{baseUrl}}/users/{{newlyCreatedUserId}}
+
+###
+
+DELETE  {{baseUrl}}/users/14c72859-c77a-4de8-8773-31c028249339
+
+###
+
+PUT  {{baseUrl}}/users/{{newlyCreatedUserId}}
+Content-Type: application/json
+
+{
+  "username": "teste.teste45",
+  "name": "Teste"
+}
